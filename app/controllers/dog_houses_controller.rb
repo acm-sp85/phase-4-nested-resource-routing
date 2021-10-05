@@ -2,7 +2,7 @@ class DogHousesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def show
-    dog_house = DogHouse.find(params[:id])
+    dog_house = DogHouse.where(id: params[:id])
     render json: dog_house, include: :reviews
 end
 
